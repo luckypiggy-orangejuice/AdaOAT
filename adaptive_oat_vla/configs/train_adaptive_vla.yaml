@@ -1,0 +1,29 @@
+model:
+  backbone: openvla-7b
+  processor: null
+  use_lora: true
+  lora_rank: 32
+  lora_alpha: 64
+  lora_dropout: 0.05
+
+training:
+  epochs: 50
+  batch_size: 32
+  grad_accumulation_steps: 4
+  learning_rate: 2.0e-4
+  weight_decay: 1.0e-4
+  bf16: true
+  random_larger_k_prob: 0.2
+  val_random_larger_k_prob: 0.0
+  log_every: 10
+  save_every: 0
+
+data:
+  annotations: /workspace/wcz/data/adaptive_oat_vla/openvla_annotations_train_uniform_ep1020_k1to8_gt.pt
+  val_annotations: /workspace/wcz/data/adaptive_oat_vla/openvla_annotations_val_uniform_ep1020_k1to8_gt.pt
+  action_vocab_map: /workspace/wcz/data/adaptive_oat_vla/openvla_oat_pilot/action_vocab_map.json
+
+oat:
+  checkpoint: /workspace/wcz/oat/output/stage0_tokenizer_uniform/checkpoints/ep-1020_mse-0.002.ckpt
+  codebook_size: 1000
+  max_action_tokens: 8

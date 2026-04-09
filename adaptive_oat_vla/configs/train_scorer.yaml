@@ -1,0 +1,15 @@
+model:
+  latent_dim: 4
+  latent_horizon: 8
+  hidden_dim: 128
+  num_layers: 2
+  num_heads: 4
+  dropout: 0.1
+  causal: true
+  candidate_ks: [1, 2, 4, 8]
+
+training:
+  epochs: 200
+  batch_size: 512
+  learning_rate: 1.0e-3
+  weight_decay: 1.0e-4
